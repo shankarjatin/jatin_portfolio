@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
 import { Menu, X } from 'lucide-react';
+import { IconType } from 'react-icons';
+
 
 // ... (previous imports and component definitions remain unchanged)
 
@@ -67,7 +69,11 @@ const ProjectCard = ({ project }: { project: Project }) => (
   </motion.div>
 );
 
-const SkillBadge = ({ skill, icon: Icon }) => (
+interface SkillBadgeProps {
+  skill: string;
+  icon: IconType;
+}
+const SkillBadge = ({ skill, icon: Icon }: SkillBadgeProps) => (
   <motion.div
     className="bg-white text-gray-800 rounded-full px-4 py-2 flex items-center shadow-md"
     whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgba(0,0,0,0.2)" }}
