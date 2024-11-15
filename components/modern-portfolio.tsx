@@ -21,8 +21,16 @@ const ColorfulBackground = () => (
     </svg>
   </div>
 );
+interface Project {
+  title: string;
+  description: string;
+  skills: Array<{ name: string; icon: React.ElementType }>;
+  liveDemo: string;
+  github: string;
+}
 
-const ProjectCard = ({ project }) => (
+
+const ProjectCard = ({ project }: { project: Project }) => (
   <motion.div
     className="bg-white rounded-lg shadow-lg p-6 flex flex-col h-full"
     whileHover={{ y: -5, boxShadow: "0px 10px 20px rgba(0,0,0,0.1)" }}
