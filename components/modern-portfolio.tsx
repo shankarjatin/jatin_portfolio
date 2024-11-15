@@ -6,8 +6,8 @@ import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaReact, FaNodeJs
 import { Menu, X } from 'lucide-react';
 import { IconType } from 'react-icons';
 
-const sectionNames = ["about", "experience", "skills", "projects", "contact"] as const;
-type Section = typeof sectionNames[number];
+type Section = "about" | "experience" | "skills" | "projects" | "contact";
+
 
 
 // ... (previous imports and component definitions remain unchanged)
@@ -92,14 +92,7 @@ export function ModernPortfolioComponent() {
   const controls = useAnimation();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const sectionRefs: { [key in Section]: React.RefObject<HTMLDivElement> } = {
-    about: useRef(null),
-    experience: useRef(null),
-    skills: useRef(null),
-    projects: useRef(null),
-    contact: useRef(null),
-  };
-  
+
 
   const isInView = useInView(sectionRefs.about);
 
@@ -109,11 +102,20 @@ export function ModernPortfolioComponent() {
     }
   }, [controls, isInView]);
 
+  const sectionRefs: { [key in Section]: React.RefObject<HTMLDivElement> } = {
+    about: useRef(null),
+    experience: useRef(null),
+    skills: useRef(null),
+    projects: useRef(null),
+    contact: useRef(null),
+  };
+  
   const handleScroll = (section: Section) => {
-    sectionRefs[section].current.scrollIntoView({ behavior: "smooth" });
+    sectionRefs[section].current?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(section);
     setIsMenuOpen(false);
   };
+  
   
 
   const handleInputChange = (e) => {
