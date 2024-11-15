@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { IconType } from 'react-icons';
 
 type Section = "about" | "experience" | "skills" | "projects" | "contact";
+const sections: Section[] = ["about", "experience", "skills", "projects", "contact"];
 
 
 
@@ -203,19 +204,18 @@ export function ModernPortfolioComponent() {
               </button>
             </div>
             <div className="hidden md:flex space-x-6">
-              {Object.keys(sectionRefs).map((section) => (
-                <motion.button
-                  key={section}
-                  onClick={() => handleScroll(section)}
-                  className={`capitalize ${
-                    activeSection === section ? 'text-indigo-600' : 'text-gray-600'
-                  } hover:text-indigo-800 transition-colors text-lg`}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  {section}
-                </motion.button>
-              ))}
+            {sections.map((section) => (
+  <motion.button
+    key={section}
+    onClick={() => handleScroll(section)}
+    className={`capitalize ${
+      activeSection === section ? 'text-indigo-600' : 'text-gray-600'
+    } hover:text-indigo-800 transition-colors text-lg`}
+  >
+    {section}
+  </motion.button>
+))}
+
             </div>
           </div>
         </nav>
@@ -229,19 +229,20 @@ export function ModernPortfolioComponent() {
               className="md:hidden bg-white"
             >
               <div className="container mx-auto px-6 py-4">
-                {Object.keys(sectionRefs).map((section) => (
-                  <motion.button
-                    key={section}
-                    onClick={() => handleScroll(section)}
-                    className={`block w-full text-left py-2 capitalize ${
-                      activeSection === section ? 'text-indigo-600' : 'text-gray-600'
-                    } hover:text-indigo-800 transition-colors text-lg`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {section}
-                  </motion.button>
-                ))}
+              {(Object.keys(sectionRefs) as Section[]).map((section) => (
+  <motion.button
+    key={section}
+    onClick={() => handleScroll(section)}
+    className={`block w-full text-left py-2 capitalize ${
+      activeSection === section ? 'text-indigo-600' : 'text-gray-600'
+    } hover:text-indigo-800 transition-colors text-lg`}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    {section}
+  </motion.button>
+))}
+
               </div>
             </motion.div>
           )}
