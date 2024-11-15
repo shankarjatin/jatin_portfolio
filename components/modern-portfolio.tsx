@@ -26,11 +26,10 @@ const ColorfulBackground = () => (
 interface Project {
   title: string;
   description: string;
-  skills: Array<{ name: string; icon: React.ElementType }>;
+  skills: Array<{ name: string; icon: IconType }>;
   liveDemo: string;
   github: string;
 }
-
 
 const ProjectCard = ({ project }: { project: Project }) => (
   <motion.div
@@ -41,7 +40,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
     <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
     <div className="flex flex-wrap gap-2 mb-4">
       {project.skills.map((skill, index) => (
-        <SkillBadge key={index} skill={skill.name} icon={skill.icon} />
+       <SkillBadge key={index} skill={skill.name} icon={skill.icon} />
       ))}
     </div>
     <div className="flex justify-between mt-auto">
