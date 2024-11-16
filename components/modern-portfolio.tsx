@@ -17,6 +17,7 @@ import {
   FaNodeJs,
   FaPython,
   FaDatabase,
+  FaJs
 } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
 import { IconType } from "react-icons";
@@ -168,43 +169,54 @@ export function ModernPortfolioComponent() {
   // ... (projects array remains unchanged)
   const projects = [
     {
-      title: "AI-Powered E-commerce Platform",
+      title: "Ed-tech Startup Website",
       description:
-        "A cutting-edge e-commerce solution with AI-driven recommendations and personalized shopping experiences.",
+        " Developed a MERN-based full-stack website for an Ed-tech startup, reducing page load time by 30% and improving user retention by 10%",
       skills: [
         { name: "React", icon: FaReact },
         { name: "Node.js", icon: FaNodeJs },
         { name: "TensorFlow", icon: FaPython },
         { name: "MongoDB", icon: FaDatabase },
       ],
-      liveDemo: "https://example.com/ai-ecommerce",
-      github: "https://github.com/yourusername/ai-ecommerce",
+      liveDemo: "https://interneex.com/",
+      github: "https://github.com/shauryajatin/interneex_frontend.git",
     },
     {
-      title: "Blockchain-based Supply Chain",
+      title: "Full Stack Website ",
       description:
-        "A transparent and secure supply chain tracking system leveraging blockchain technology for enhanced traceability.",
+        " Backend: Node.js, Express, MongoDB. Features: login, protected routes, contact, appointment booking, career page with file upload (Multer). Nodemailer for email. Frontend: HTML, CSS, EJS, React.js, Bootstrap, Figma.",
+      skills: [
+        { name: "Python", icon: FaPython },
+        { name: "Node.js", icon: FaNodeJs },
+        { name: "MongoDB", icon: FaDatabase },
+      ],
+      liveDemo: "https://pestcontrolinitialdemo.onrender.com/",
+      github: "https://github.com/shankarjatin/contact_manager_backend.git",
+    },
+    {
+      title: "Fitness Tracker Application",
+      description:
+        "Built a fitness tracking app, allowing users to track workout progress and manage fitness goals, resulting in a 15% increase in app usage.",
       skills: [
         { name: "Solidity", icon: FaDatabase },
         { name: "React", icon: FaReact },
         { name: "Node.js", icon: FaNodeJs },
         { name: "Ethereum", icon: FaDatabase },
       ],
-      liveDemo: "https://example.com/blockchain-supply-chain",
-      github: "https://github.com/yourusername/blockchain-supply-chain",
+      liveDemo: "https://fitness-tracker-client-three.vercel.app/",
+      github: "https://github.com/shankarjatin/fitness_tracker.git",
     },
     {
-      title: "IoT Smart Home System",
+      title: " Contact Management System",
       description:
-        "An integrated smart home solution connecting various IoT devices for automated and efficient home management.",
+        " Developed a secure backend system for contact management, allowing users to register, save contacts, and protect personal  data with secure routes and JWT authentication",
       skills: [
         { name: "Python", icon: FaPython },
-        { name: "React Native", icon: FaReact },
-        { name: "Node.js", icon: FaNodeJs },
+        { name: "Javascript", icon: FaJs },
         { name: "MongoDB", icon: FaDatabase },
       ],
-      liveDemo: "https://example.com/smart-home",
-      github: "https://github.com/yourusername/smart-home",
+      liveDemo: "https://documenter.getpostman.com/view/24164134/2sA358eksV",
+      github: "https://github.com/shankarjatin/contact_manager_backend.git",
     },
   ];
 
@@ -348,6 +360,7 @@ export function ModernPortfolioComponent() {
             {[
                {
                 company: "Auriv Learning",
+                src:"https://i.ibb.co/R2NYzBX/luca-bravo-XJXWbf-So2f0-unsplash.jpg",
                 role: "Full-stack Developer Intern",
                 period: "Nov 2024 - Present",
                 description:
@@ -355,17 +368,19 @@ export function ModernPortfolioComponent() {
               },
               {
                 company: "Modgenics Technology Solutions",
+                src:"https://i.ibb.co/wpjZYHq/christopher-gower-m-HRf-Lhg-ABo-unsplash.jpg",
                 role: " Software Developer Intern",
-                period: "June 2024–Sept2024",
+                period: "June 2024 – Sept 2024",
                 description:
                   "Redesigned and optimized web solutions using Node.js, React.js, and AWS, enhancing performance, reliability, and user engagement. Successfully implemented project management tools and third-party API integrations to improve team collaboration and checkout processes.",
               },
               {
                 company: "Freelance",
+                src:"https://i.ibb.co/bsGqKZr/book.png",
                 role: "Full-stack Developer",
                 period: "2023 - Present",
                 description:
-                  "• Created a customized pest control website for a Lucknow-based client, providing seamless online booking and detailed service information Demonstrated problem-solving skills and client-centric development approach.",
+                  "Created a customized pest control website for a Lucknow-based client, providing seamless online booking and detailed service information Demonstrated problem-solving skills and client-centric development approach.",
               },
             ].map((job, index) => (
               <motion.div
@@ -376,7 +391,7 @@ export function ModernPortfolioComponent() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 <img
-                  src="/placeholder.svg?height=80&width=80"
+                  src={job.src}
                   alt={job.company}
                   className="w-20 h-20 mb-4 md:mb-0 md:mr-6 rounded-full border-2 border-indigo-300"
                 />
@@ -410,7 +425,7 @@ export function ModernPortfolioComponent() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: "JavaScript", icon: FaReact },
+              { name: "JavaScript", icon: FaJs },
               { name: "Python", icon: FaPython },
               { name: "Node.js", icon: FaNodeJs },
               { name: "React", icon: FaReact },
@@ -565,7 +580,7 @@ export function ModernPortfolioComponent() {
       <footer className="bg-indigo-900 text-white py-8">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-lg">
-            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+            &copy; {new Date().getFullYear()} Jatin Shankar Srivastava. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             {[FaGithub, FaLinkedin, FaTwitter].map((Icon, index) => (
