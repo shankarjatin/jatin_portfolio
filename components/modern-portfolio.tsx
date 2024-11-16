@@ -1,15 +1,34 @@
-'use client'
+"use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaReact, FaNodeJs, FaPython, FaDatabase } from 'react-icons/fa';
-import { Menu, X } from 'lucide-react';
-import { IconType } from 'react-icons';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  AnimatePresence,
+} from "framer-motion";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaPhone,
+  FaReact,
+  FaNodeJs,
+  FaPython,
+  FaDatabase,
+} from "react-icons/fa";
+import { Menu, X } from "lucide-react";
+import { IconType } from "react-icons";
 
 type Section = "about" | "experience" | "skills" | "projects" | "contact";
-const sections: Section[] = ["about", "experience", "skills", "projects", "contact"];
-
-
+const sections: Section[] = [
+  "about",
+  "experience",
+  "skills",
+  "projects",
+  "contact",
+];
 
 // ... (previous imports and component definitions remain unchanged)
 
@@ -18,9 +37,18 @@ const ColorfulBackground = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
       <defs>
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style={{ stopColor: '#ff9a9e', stopOpacity: 0.2 }} />
-          <stop offset="50%" style={{ stopColor: '#fad0c4', stopOpacity: 0.2 }} />
-          <stop offset="100%" style={{ stopColor: '#ffecd2', stopOpacity: 0.2 }} />
+          <stop
+            offset="0%"
+            style={{ stopColor: "#ff9a9e", stopOpacity: 0.2 }}
+          />
+          <stop
+            offset="50%"
+            style={{ stopColor: "#fad0c4", stopOpacity: 0.2 }}
+          />
+          <stop
+            offset="100%"
+            style={{ stopColor: "#ffecd2", stopOpacity: 0.2 }}
+          />
         </linearGradient>
       </defs>
       <rect width="100%" height="100%" fill="url(#grad1)" />
@@ -44,7 +72,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
     <p className="text-gray-600 mb-4 flex-grow">{project.description}</p>
     <div className="flex flex-wrap gap-2 mb-4">
       {project.skills.map((skill, index) => (
-       <SkillBadge key={index} skill={skill.name} icon={skill.icon} />
+        <SkillBadge key={index} skill={skill.name} icon={skill.icon} />
       ))}
     </div>
     <div className="flex justify-between mt-auto">
@@ -88,10 +116,14 @@ const SkillBadge = ({ skill, icon: Icon }: SkillBadgeProps) => (
 );
 
 export function ModernPortfolioComponent() {
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState("about");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const controls = useAnimation();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const sectionRefs: { [key in Section]: React.RefObject<HTMLDivElement> } = {
     about: useRef(null),
@@ -100,38 +132,34 @@ export function ModernPortfolioComponent() {
     projects: useRef(null),
     contact: useRef(null),
   };
-  
 
   const isInView = useInView(sectionRefs.about);
 
   useEffect(() => {
     if (isInView) {
-      controls.start('visible');
+      controls.start("visible");
     }
   }, [controls, isInView]);
 
-  
-  
   const handleScroll = (section: Section) => {
     sectionRefs[section].current?.scrollIntoView({ behavior: "smooth" });
     setActiveSection(section);
     setIsMenuOpen(false);
   };
-  
-  
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Here you would typically send the form data to a server
   };
-  
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -140,59 +168,61 @@ export function ModernPortfolioComponent() {
   // ... (projects array remains unchanged)
   const projects = [
     {
-      title: 'AI-Powered E-commerce Platform',
-      description: 'A cutting-edge e-commerce solution with AI-driven recommendations and personalized shopping experiences.',
+      title: "AI-Powered E-commerce Platform",
+      description:
+        "A cutting-edge e-commerce solution with AI-driven recommendations and personalized shopping experiences.",
       skills: [
-        { name: 'React', icon: FaReact },
-        { name: 'Node.js', icon: FaNodeJs },
-        { name: 'TensorFlow', icon: FaPython },
-        { name: 'MongoDB', icon: FaDatabase },
+        { name: "React", icon: FaReact },
+        { name: "Node.js", icon: FaNodeJs },
+        { name: "TensorFlow", icon: FaPython },
+        { name: "MongoDB", icon: FaDatabase },
       ],
-      liveDemo: 'https://example.com/ai-ecommerce',
-      github: 'https://github.com/yourusername/ai-ecommerce',
+      liveDemo: "https://example.com/ai-ecommerce",
+      github: "https://github.com/yourusername/ai-ecommerce",
     },
     {
-      title: 'Blockchain-based Supply Chain',
-      description: 'A transparent and secure supply chain tracking system leveraging blockchain technology for enhanced traceability.',
+      title: "Blockchain-based Supply Chain",
+      description:
+        "A transparent and secure supply chain tracking system leveraging blockchain technology for enhanced traceability.",
       skills: [
-        { name: 'Solidity', icon: FaDatabase },
-        { name: 'React', icon: FaReact },
-        { name: 'Node.js', icon: FaNodeJs },
-        { name: 'Ethereum', icon: FaDatabase },
+        { name: "Solidity", icon: FaDatabase },
+        { name: "React", icon: FaReact },
+        { name: "Node.js", icon: FaNodeJs },
+        { name: "Ethereum", icon: FaDatabase },
       ],
-      liveDemo: 'https://example.com/blockchain-supply-chain',
-      github: 'https://github.com/yourusername/blockchain-supply-chain',
+      liveDemo: "https://example.com/blockchain-supply-chain",
+      github: "https://github.com/yourusername/blockchain-supply-chain",
     },
     {
-      title: 'IoT Smart Home System',
-      description: 'An integrated smart home solution connecting various IoT devices for automated and efficient home management.',
+      title: "IoT Smart Home System",
+      description:
+        "An integrated smart home solution connecting various IoT devices for automated and efficient home management.",
       skills: [
-        { name: 'Python', icon: FaPython },
-        { name: 'React Native', icon: FaReact },
-        { name: 'Node.js', icon: FaNodeJs },
-        { name: 'MongoDB', icon: FaDatabase },
+        { name: "Python", icon: FaPython },
+        { name: "React Native", icon: FaReact },
+        { name: "Node.js", icon: FaNodeJs },
+        { name: "MongoDB", icon: FaDatabase },
       ],
-      liveDemo: 'https://example.com/smart-home',
-      github: 'https://github.com/yourusername/smart-home',
+      liveDemo: "https://example.com/smart-home",
+      github: "https://github.com/yourusername/smart-home",
     },
   ];
-
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 relative">
       <ColorfulBackground />
-      
+
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg shadow-md">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <motion.h1 
+            <motion.h1
               className="text-3xl font-bold text-indigo-700"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Your Name
+              Jatin Shankar Srivastava
             </motion.h1>
             <div className="md:hidden">
               <button
@@ -204,18 +234,19 @@ export function ModernPortfolioComponent() {
               </button>
             </div>
             <div className="hidden md:flex space-x-6">
-            {sections.map((section) => (
-  <motion.button
-    key={section}
-    onClick={() => handleScroll(section)}
-    className={`capitalize ${
-      activeSection === section ? 'text-indigo-600' : 'text-gray-600'
-    } hover:text-indigo-800 transition-colors text-lg`}
-  >
-    {section}
-  </motion.button>
-))}
-
+              {sections.map((section) => (
+                <motion.button
+                  key={section}
+                  onClick={() => handleScroll(section)}
+                  className={`capitalize ${
+                    activeSection === section
+                      ? "text-indigo-600"
+                      : "text-gray-600"
+                  } hover:text-indigo-800 transition-colors text-lg`}
+                >
+                  {section}
+                </motion.button>
+              ))}
             </div>
           </div>
         </nav>
@@ -223,26 +254,27 @@ export function ModernPortfolioComponent() {
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="md:hidden bg-white"
             >
               <div className="container mx-auto px-6 py-4">
-              {(Object.keys(sectionRefs) as Section[]).map((section) => (
-  <motion.button
-    key={section}
-    onClick={() => handleScroll(section)}
-    className={`block w-full text-left py-2 capitalize ${
-      activeSection === section ? 'text-indigo-600' : 'text-gray-600'
-    } hover:text-indigo-800 transition-colors text-lg`}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    {section}
-  </motion.button>
-))}
-
+                {(Object.keys(sectionRefs) as Section[]).map((section) => (
+                  <motion.button
+                    key={section}
+                    onClick={() => handleScroll(section)}
+                    className={`block w-full text-left py-2 capitalize ${
+                      activeSection === section
+                        ? "text-indigo-600"
+                        : "text-gray-600"
+                    } hover:text-indigo-800 transition-colors text-lg`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {section}
+                  </motion.button>
+                ))}
               </div>
             </motion.div>
           )}
@@ -260,26 +292,37 @@ export function ModernPortfolioComponent() {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">About Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">
+            About Me
+          </h2>
           <div className="flex flex-col md:flex-row items-center bg-white rounded-lg shadow-lg p-8">
-          <motion.img
-  src="https://via.placeholder.com/300"  // Use a 1:1 aspect ratio placeholder
-  alt="Profile Picture"
-  className="rounded-full w-48 h-48 object-cover mb-6 md:mb-0 md:mr-8 border-4 border-indigo-300"
-  whileHover={{ scale: 1.05 }}
-  transition={{ type: "spring", stiffness: 300 }}
-/>
+            <motion.img
+              src="https://i.ibb.co/GVWGQr3/resized-image.jpg" // Use a 1:1 aspect ratio placeholder
+              alt="Profile Picture"
+              className="rounded-full w-48 h-48 object-cover mb-6 md:mb-0 md:mr-8 border-4 border-indigo-300"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
 
             <div>
               <p className="mb-4 text-lg text-gray-700 leading-relaxed">
-                Hello! I'm a passionate full-stack developer with a keen interest in AI and blockchain technologies. 
-                With over 5 years of experience in building scalable web applications, I thrive on creating innovative 
-                solutions that push the boundaries of what's possible in tech. My goal is to leverage cutting-edge 
-                technologies to solve real-world problems and create impactful digital experiences.
+                I’m a skilled web developer with expertise in the MERN stack,
+                DevOps practices, and crafting seamless, scalable applications.
+                I focus on delivering efficient, secure, and user-friendly
+                solutions, combining clean code with modern design principles.
+                With a deep understanding of API integrations, cloud deployment,
+                and performance optimization, I ensure systems are reliable and
+                adaptable to evolving needs. My approach emphasizes
+                collaboration, attention to detail, and staying updated with the
+                latest technologies, making me a valuable asset for building
+                impactful and future-ready applications. Let’s collaborate to
+                turn ideas into exceptional digital experiences!
               </p>
               <motion.h3
                 className="text-2xl font-semibold mb-2 text-indigo-600"
-                animate={{ color: ['#4F46E5', '#7C3AED', '#EC4899', '#4F46E5'] }}
+                animate={{
+                  color: ["#4F46E5", "#7C3AED", "#EC4899", "#4F46E5"],
+                }}
                 transition={{ duration: 5, repeat: Infinity }}
               >
                 Full-Stack Developer | AI Enthusiast | Blockchain Explorer
@@ -298,12 +341,32 @@ export function ModernPortfolioComponent() {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">Experience</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">
+            Experience
+          </h2>
           <div className="space-y-8">
             {[
-              { company: 'TechInnovate Solutions', role: 'Senior Full-Stack Developer', period: '2020 - Present', description: 'Led development of AI-powered e-commerce platform, increasing conversion rates by 35%. Implemented machine learning algorithms for personalized product recommendations.' },
-              { company: 'BlockChain Ventures', role: 'Blockchain Developer', period: '2018 - 2020', description: 'Developed smart contracts for decentralized finance (DeFi) applications, managing over $50M in locked value. Implemented secure, audited smart contracts on Ethereum and Binance Smart Chain.' },
-              { company: 'DataDriven Corp', role: 'Machine Learning Engineer', period: '2016 - 2018', description: 'Implemented predictive models for customer churn reduction, saving the company $2M annually. Developed and deployed machine learning models for real-time data analysis and decision-making.' },
+              {
+                company: "TechInnovate Solutions",
+                role: "Senior Full-Stack Developer",
+                period: "2020 - Present",
+                description:
+                  "Led development of AI-powered e-commerce platform, increasing conversion rates by 35%. Implemented machine learning algorithms for personalized product recommendations.",
+              },
+              {
+                company: "BlockChain Ventures",
+                role: "Blockchain Developer",
+                period: "2018 - 2020",
+                description:
+                  "Developed smart contracts for decentralized finance (DeFi) applications, managing over $50M in locked value. Implemented secure, audited smart contracts on Ethereum and Binance Smart Chain.",
+              },
+              {
+                company: "DataDriven Corp",
+                role: "Machine Learning Engineer",
+                period: "2016 - 2018",
+                description:
+                  "Implemented predictive models for customer churn reduction, saving the company $2M annually. Developed and deployed machine learning models for real-time data analysis and decision-making.",
+              },
             ].map((job, index) => (
               <motion.div
                 key={index}
@@ -312,12 +375,20 @@ export function ModernPortfolioComponent() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <img src="/placeholder.svg?height=80&width=80" alt={job.company} className="w-20 h-20 mb-4 md:mb-0 md:mr-6 rounded-full border-2 border-indigo-300" />
+                <img
+                  src="/placeholder.svg?height=80&width=80"
+                  alt={job.company}
+                  className="w-20 h-20 mb-4 md:mb-0 md:mr-6 rounded-full border-2 border-indigo-300"
+                />
                 <div>
-                  <h3 className="text-2xl font-semibold text-indigo-700">{job.role}</h3>
+                  <h3 className="text-2xl font-semibold text-indigo-700">
+                    {job.role}
+                  </h3>
                   <p className="text-xl text-gray-600 mb-2">{job.company}</p>
                   <p className="text-md text-indigo-500 mb-2">{job.period}</p>
-                  <p className="text-gray-700 leading-relaxed">{job.description}</p>
+                  <p className="text-gray-700 leading-relaxed">
+                    {job.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -334,17 +405,19 @@ export function ModernPortfolioComponent() {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">Skills</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">
+            Skills
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: 'JavaScript', icon: FaReact },
-              { name: 'Python', icon: FaPython },
-              { name: 'Node.js', icon: FaNodeJs },
-              { name: 'React', icon: FaReact },
-              { name: 'MongoDB', icon: FaDatabase },
-              { name: 'GraphQL', icon: FaDatabase },
-              { name: 'TensorFlow', icon: FaPython },
-              { name: 'Solidity', icon: FaDatabase },
+              { name: "JavaScript", icon: FaReact },
+              { name: "Python", icon: FaPython },
+              { name: "Node.js", icon: FaNodeJs },
+              { name: "React", icon: FaReact },
+              { name: "MongoDB", icon: FaDatabase },
+              { name: "GraphQL", icon: FaDatabase },
+              { name: "TensorFlow", icon: FaPython },
+              { name: "Solidity", icon: FaDatabase },
             ].map((skill, index) => (
               <motion.div
                 key={index}
@@ -371,7 +444,9 @@ export function ModernPortfolioComponent() {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">
+            Projects
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} />
@@ -389,11 +464,18 @@ export function ModernPortfolioComponent() {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">Contact Me</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center text-indigo-800">
+            Contact Me
+          </h2>
           <div className="bg-white rounded-lg shadow-lg p-8">
             <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
               <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
+                <label
+                  htmlFor="name"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -405,7 +487,12 @@ export function ModernPortfolioComponent() {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
+                <label
+                  htmlFor="email"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -417,7 +504,12 @@ export function ModernPortfolioComponent() {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
+                <label
+                  htmlFor="message"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -472,7 +564,9 @@ export function ModernPortfolioComponent() {
       {/* Footer */}
       <footer className="bg-indigo-900 text-white py-8">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-lg">&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p className="text-lg">
+            &copy; {new Date().getFullYear()} Your Name. All rights reserved.
+          </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             {[FaGithub, FaLinkedin, FaTwitter].map((Icon, index) => (
               <motion.a
