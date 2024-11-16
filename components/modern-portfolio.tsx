@@ -346,26 +346,26 @@ export function ModernPortfolioComponent() {
           </h2>
           <div className="space-y-8">
             {[
-              {
-                company: "TechInnovate Solutions",
-                role: "Senior Full-Stack Developer",
-                period: "2020 - Present",
+               {
+                company: "Auriv Learning",
+                role: "Full-stack Developer Intern",
+                period: "Nov 2024 - Present",
                 description:
-                  "Led development of AI-powered e-commerce platform, increasing conversion rates by 35%. Implemented machine learning algorithms for personalized product recommendations.",
+                  "Developed and maintained web applications using React.js, Node.js, and MongoDB, ensuring high performance and user engagement. Implemented RESTful APIs and integrated third-party services to enhance functionality and user experience. Collaborated with cross-functional teams to deliver projects on time and within budget.",
               },
               {
-                company: "BlockChain Ventures",
-                role: "Blockchain Developer",
-                period: "2018 - 2020",
+                company: "Modgenics Technology Solutions",
+                role: " Software Developer Intern",
+                period: "June 2024–Sept2024",
                 description:
-                  "Developed smart contracts for decentralized finance (DeFi) applications, managing over $50M in locked value. Implemented secure, audited smart contracts on Ethereum and Binance Smart Chain.",
+                  "Redesigned and optimized web solutions using Node.js, React.js, and AWS, enhancing performance, reliability, and user engagement. Successfully implemented project management tools and third-party API integrations to improve team collaboration and checkout processes.",
               },
               {
-                company: "DataDriven Corp",
-                role: "Machine Learning Engineer",
-                period: "2016 - 2018",
+                company: "Freelance",
+                role: "Full-stack Developer",
+                period: "2023 - Present",
                 description:
-                  "Implemented predictive models for customer churn reduction, saving the company $2M annually. Developed and deployed machine learning models for real-time data analysis and decision-making.",
+                  "• Created a customized pest control website for a Lucknow-based client, providing seamless online booking and detailed service information Demonstrated problem-solving skills and client-centric development approach.",
               },
             ].map((job, index) => (
               <motion.div
