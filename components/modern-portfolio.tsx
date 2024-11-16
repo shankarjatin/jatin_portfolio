@@ -221,7 +221,7 @@ export function ModernPortfolioComponent() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 relative">
+    <div className="min-h-screen bg-gray-50 text-gray-800 relative mx-30">
       <ColorfulBackground />
 
       {/* Header */}
